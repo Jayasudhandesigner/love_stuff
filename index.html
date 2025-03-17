@@ -9,7 +9,7 @@
         body {
             margin: 0;
             height: 200vh;
-            background: linear-gradient(135deg, #ff4d4d, #ff99cc, #ffccff); /* Romantic gradient */
+            background: linear-gradient(135deg, #ff4d4d, #ff99cc, #ffccff);
             font-family: 'Arial', sans-serif;
             color: #fff;
             text-align: center;
@@ -49,10 +49,10 @@
             font-size: 500px;
             color: #ff1a1a;
             position: absolute;
-            bottom: -200px; /* Start below the screen */
+            bottom: -200px; /* Start below screen */
             left: 50%;
             transform: translate(-50%, 0) scale(0.5);
-            transition: transform 2s ease-out, bottom 2s ease-out;
+            transition: transform 0.1s ease-out, bottom 0.1s ease-out;
             z-index: 2;
             user-select: none;
             opacity: 1;
@@ -85,22 +85,17 @@
         const heart = document.getElementById('heart');
         let hasRedirected = false;
 
-        // Animate heart from bottom to center
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                heart.style.bottom = '50%';
-                heart.style.transform = 'translate(-50%, 50%) scale(1)';
-            }, 500);
-        });
-
-        // Scroll Effect
+        // Scroll-triggered scale and movement
         window.addEventListener('scroll', () => {
             if (hasRedirected) return;
 
             let scrollPosition = window.scrollY;
             let scale = 1 + (scrollPosition / 300);
-            heart.style.transform = `translate(-50%, -50%) scale(${scale})`;
+            let moveUp = Math.min(scrollPosition / 2, window.innerHeight / 2);
 
+            heart.style.transform = `translate(-50%, ${-moveUp}px) scale(${scale})`;
+
+            // Redirect if scaled enough
             if (scale >= 2.5) {
                 heart.style.opacity = '0';
                 setTimeout(() => {
@@ -109,7 +104,6 @@
                 hasRedirected = true;
             }
         });
-
     </script>
 </body>
 </html>
