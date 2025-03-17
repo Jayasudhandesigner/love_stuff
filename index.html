@@ -49,12 +49,13 @@
             font-size: 500px;
             color: #ff1a1a;
             position: absolute;
-            top: 50%;
+            bottom: -200px; /* Start below the screen */
             left: 50%;
-            transform: translate(-50%, -50%) scale(1);
-            transition: transform 0.2s ease, opacity 0.5s ease;
+            transform: translate(-50%, 0) scale(0.5);
+            transition: transform 2s ease-out, bottom 2s ease-out;
             z-index: 2;
             user-select: none;
+            opacity: 1;
         }
         .parallax-bg {
             position: absolute;
@@ -81,21 +82,25 @@
     </div>
 
     <script>
-        const container = document.getElementById('container');
         const heart = document.getElementById('heart');
-        const parallaxBg = document.getElementById('parallaxBg');
         let hasRedirected = false;
 
-        // Zoom on scroll and transition effect
+        // Animate heart from bottom to center
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                heart.style.bottom = '50%';
+                heart.style.transform = 'translate(-50%, 50%) scale(1)';
+            }, 500);
+        });
+
+        // Scroll Effect
         window.addEventListener('scroll', () => {
             if (hasRedirected) return;
 
             let scrollPosition = window.scrollY;
             let scale = 1 + (scrollPosition / 300);
             heart.style.transform = `translate(-50%, -50%) scale(${scale})`;
-            parallaxBg.style.transform = `translateZ(-100px) translateY(${scrollPosition * 0.3}px) scale(1.2)`;
 
-            // When scale reaches 2.5, fade out heart and redirect
             if (scale >= 2.5) {
                 heart.style.opacity = '0';
                 setTimeout(() => {
@@ -105,37 +110,6 @@
             }
         });
 
-        // Mouse movement effect
-        container.addEventListener('mousemove', (e) => {
-            if (hasRedirected) return;
-
-            const rect = container.getBoundingClientRect();
-            const mouseX = e.clientX - rect.left - rect.width / 2;
-            const mouseY = e.clientY - rect.top - rect.height / 2;
-
-            const moveX = mouseX * 0.05;
-            const moveY = mouseY * 0.05;
-            let scrollPosition = window.scrollY;
-            let scale = 1 + (scrollPosition / 300);
-            heart.style.transform = `translate(-50%, -50%) translate(${moveX}px, ${moveY}px) scale(${scale})`;
-            parallaxBg.style.transform = `translateZ(-100px) translate(${-moveX * 0.1}px, ${-moveY * 0.1}px) scale(1.2)`;
-        });
-
-        // Reset on mouse leave (keeps scroll zoom)
-        container.addEventListener('mouseleave', () => {
-            if (hasRedirected) return;
-
-            let scrollPosition = window.scrollY;
-            let scale = 1 + (scrollPosition / 300);
-            heart.style.transform = `translate(-50%, -50%) scale(${scale})`;
-            parallaxBg.style.transform = 'translateZ(-100px) scale(1.2)';
-        });
-
-        // Click to change color (optional)
-        heart.addEventListener('click', () => {
-            if (hasRedirected) return;
-            heart.style.color = heart.style.color === 'rgb(255, 26, 26)' ? '#ff99cc' : '#ff1a1a';
-        });
     </script>
 </body>
 </html>
