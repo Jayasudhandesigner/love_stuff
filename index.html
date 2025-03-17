@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forever Yours</title>
+    <link href="https://fonts.googleapis.com/css2?family=Allura&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            height: 200vh;
+            background: linear-gradient(135deg, #ff4d4d, #ff99cc, #ffccff); /* Romantic gradient */
+            font-family: 'Arial', sans-serif;
+            color: #fff;
+            text-align: center;
+            overflow-x: hidden;
+        }
+        .header {
+            padding: 50px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        h1 {
+            font-family: 'Allura', cursive;
+            font-size: 60px;
+            margin: 0;
+            color: #fff;
+        }
+        p {
+            font-size: 24px;
+            margin: 10px 0;
+        }
+        .signature {
+            font-size: 28px;
+            margin-top: 20px;
+            font-style: italic;
+            color: #ffccff;
+        }
+        .parallax-container {
+            width: 600px;
+            height: 600px;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            perspective: 1000px;
+            cursor: pointer;
+        }
+        .heart {
+            font-size: 500px;
+            color: #ff1a1a;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(1);
+            transition: transform 0.2s ease, opacity 0.5s ease;
+            z-index: 2;
+            user-select: none;
+        }
+        .parallax-bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1528460033278-991b5316eecb?q=80&w=1470&auto=format&fit=crop') center/cover;
+            z-index: 1;
+            transform: translateZ(-100px) scale(1.2);
+            transition: transform 0.1s ease;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Forever Yours</h1>
+        <p>Please swipe down please</p>
+        <div class="signature">Forever Yours, Akshya</div>
+    </div>
+
+    <div class="parallax-container" id="container">
+        <div class="parallax-bg" id="parallaxBg"></div>
+        <div class="heart" id="heart">❤️</div>
+    </div>
+
+    <script>
+        const container = document.getElementById('container');
+        const heart = document.getElementById('heart');
+        const parallaxBg = document.getElementById('parallaxBg');
+        let hasRedirected = false;
+
+        // Zoom on scroll and transition effect
+        window.addEventListener('scroll', () => {
+            if (hasRedirected) return;
+
+            let scrollPosition = window.scrollY;
+            let scale = 1 + (scrollPosition / 300);
+            heart.style.transform = `translate(-50%, -50%) scale(${scale})`;
+            parallaxBg.style.transform = `translateZ(-100px) translateY(${scrollPosition * 0.3}px) scale(1.2)`;
+
+            // When scale reaches 2.5, fade out heart and redirect
+            if (scale >= 2.5) {
+                heart.style.opacity = '0';
+                setTimeout(() => {
+                    window.location.href = 'love.html';
+                }, 500);
+                hasRedirected = true;
+            }
+        });
+
+        // Mouse movement effect
+        container.addEventListener('mousemove', (e) => {
+            if (hasRedirected) return;
+
+            const rect = container.getBoundingClientRect();
+            const mouseX = e.clientX - rect.left - rect.width / 2;
+            const mouseY = e.clientY - rect.top - rect.height / 2;
+
+            const moveX = mouseX * 0.05;
+            const moveY = mouseY * 0.05;
+            let scrollPosition = window.scrollY;
+            let scale = 1 + (scrollPosition / 300);
+            heart.style.transform = `translate(-50%, -50%) translate(${moveX}px, ${moveY}px) scale(${scale})`;
+            parallaxBg.style.transform = `translateZ(-100px) translate(${-moveX * 0.1}px, ${-moveY * 0.1}px) scale(1.2)`;
+        });
+
+        // Reset on mouse leave (keeps scroll zoom)
+        container.addEventListener('mouseleave', () => {
+            if (hasRedirected) return;
+
+            let scrollPosition = window.scrollY;
+            let scale = 1 + (scrollPosition / 300);
+            heart.style.transform = `translate(-50%, -50%) scale(${scale})`;
+            parallaxBg.style.transform = 'translateZ(-100px) scale(1.2)';
+        });
+
+        // Click to change color (optional)
+        heart.addEventListener('click', () => {
+            if (hasRedirected) return;
+            heart.style.color = heart.style.color === 'rgb(255, 26, 26)' ? '#ff99cc' : '#ff1a1a';
+        });
+    </script>
+</body>
+</html>

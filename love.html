@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Love for You</title>
+    <link href="https://fonts.googleapis.com/css2?family=Allura&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            min-height: 200vh;
+            background: linear-gradient(135deg, #ffccff, #ff99cc, #ff4d4d); /* Romantic gradient: soft pinks to red */
+            font-family: 'Arial', sans-serif;
+            color: #000000;
+            text-align: center;
+            padding: 50px;
+            position: relative;
+            overflow-x: hidden;
+        }
+        /* Faint scattered hearts overlay */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path d="M50 86c-4 0-8-2-10-6-8-14-20-24-30-32-4-4-4-8 0-12 4-4 8-4 12 0l18 16 18-16c4-4 8-4 12 0 4 4 4 8 0 12-10 8-22 18-30 32-2 4-6 6-10 6z" fill="%23ffffff" opacity="0.1"/></svg>') repeat;
+            opacity: 0.3;
+            z-index: 0;
+        }
+        /* Scattered glowing hearts */
+        .heart-glow {
+            position: absolute;
+            color: #ff1a1a;
+            font-size: 20px;
+            opacity: 0.2;
+            animation: glow 3s infinite ease-in-out;
+        }
+        .heart-glow:nth-child(1) { top: 10%; left: 15%; font-size: 25px; animation-delay: 0s; }
+        .heart-glow:nth-child(2) { top: 20%; right: 20%; font-size: 30px; animation-delay: 1s; }
+        .heart-glow:nth-child(3) { bottom: 15%; left: 25%; font-size: 15px; animation-delay: 2s; }
+        .heart-glow:nth-child(4) { bottom: 10%; right: 10%; font-size: 20px; animation-delay: 0.5s; }
+        .heart-glow:nth-child(5) { top: 50%; left: 5%; font-size: 18px; animation-delay: 1.5s; }
+        @keyframes glow {
+            0%, 100% { opacity: 0.2; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(1.2); }
+        }
+        h1 {
+            font-size: 60px;
+            margin: 0 0 20px;
+            color: #000000;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 1;
+        }
+        .love-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.2); /* Slightly transparent for depth */
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 1;
+        }
+        p {
+            font-size: 20px;
+            line-height: 1.6;
+            margin: 15px 0;
+            color: #000000;
+            position: relative;
+            z-index: 1;
+        }
+        .highlight {
+            color: #c8102e;
+            font-family: 'Allura', cursive;
+            font-size: 26px;
+            font-style: normal;
+            font-weight: normal;
+            display: block;
+            text-align: center;
+            line-height: 2.2;
+        }
+        .lyrics {
+            display: block;
+            transition: transform 0.4s ease, text-shadow 0.4s ease, color 0.4s ease;
+        }
+        .lyrics.pop {
+            transform: scale(1.3);
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+            color: #ff1a1a;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 20px;
+            background: #c8102e;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+        .back-link:hover {
+            background: #a00d24;
+        }
+        /* New Section */
+        .chase-section {
+            margin-top: 50px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 50px auto;
+            position: relative;
+            z-index: 1;
+        }
+        .chase-section h2 {
+            font-family: 'Allura', cursive;
+            font-size: 40px;
+            color: #c8102e;
+            margin-bottom: 20px;
+        }
+        .chase-section p {
+            font-size: 18px;
+            color: #000000;
+        }
+        .chase-image {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            margin: 20px 0;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Scattered glowing hearts -->
+    <div class="heart-glow">❤️</div>
+    <div class="heart-glow">❤️</div>
+    <div class="heart-glow">❤️</div>
+    <div class="heart-glow">❤️</div>
+    <div class="heart-glow">❤️</div>
+
+    <div class="love-content">
+        <h1>My Love for You</h1>
+        <p>My sweetest love, this heart grows bigger every day because of you—every thought, every moment, filled with how much I adore you.</p>
+        <p>You’re my everything—my sunrise after the longest night, my safe haven in a chaotic world, my reason to believe in forever. I’d walk through fire, swim through storms, and rewrite the stars just to keep you smiling.</p>
+        <p>Every moment with you feels like a gift I don’t deserve, yet I’ll spend my life trying to be worthy of.</p>
+        <p class="highlight">
+            <span class="lyrics">"En kathali, en kanmani, en snehithi…"</span>
+            <span class="lyrics">"Unnodu naan irundha ovvoru mani thuliyum,"</span>
+            <span class="lyrics">"marana padukkayilum marakkadhu kanmaniyae…"</span><br>
+            <span class="lyrics">"Thonnooru nimidangal thottanaitha kaalam thaan,"</span>
+            <span class="lyrics">"ennooru aandugalaai idhayathil kalakkudhadi…"</span><br>
+            <span class="lyrics">"Paarvaiyilae sila nimidam,"</span>
+            <span class="lyrics">"bayathodu sila nimidam,"</span>
+            <span class="lyrics">"un ninaivugalilae…"</span><br>
+            <span class="lyrics">"Kanneeril sila nimidam,"</span>
+            <span class="lyrics">"un peyarai sollum ovvoru nodiyil…"</span><br>
+            <span class="lyrics">"Ethu nyayam, ethu paavam,"</span>
+            <span class="lyrics">"iruvarukkum thondravillai…"</span>
+            <span class="lyrics">"Adu irava, athu pagala,"</span>
+            <span class="lyrics">"athai patri ariyavillai…"</span><br>
+            <span class="lyrics">"Yaar thodanga? Yaar mudikka?"</span>
+            <span class="lyrics">"Oru vazhiyum thondravillai…"</span>
+            <span class="lyrics">"Iruvarumae thodangivittoam,"</span>
+            <span class="lyrics">"ithu varaikkum kelvi illai…"</span><br>
+            <span class="lyrics">"Acham kalainthen,"</span>
+            <span class="lyrics">"un ninaivai anaithen…"</span>
+            <span class="lyrics">"Kanda un kolam kanavaaga marainthaalum,"</span>
+            <span class="lyrics">"Kadaisiyil azhutha kanneer kaiyil innum irukkudhadi…"</span><br>
+            <span class="lyrics">"Unnodu naan irundha ovvoru mani thuliyum,"</span>
+            <span class="lyrics">"marana padukkayilum marakkadhu kanmaniyae…"</span>
+        </p>
+        <p>From the way you laugh to the way you light up my world, there’s no part of you I don’t cherish. You’re my heart’s home, now and always.</p>
+        <a href="index.html" class="back-link">Back to the Heart</a>
+    </div>
+
+    <!-- New Section -->
+    <div class="chase-section">
+        <h2>Chasing You Across the Earth</h2>
+        <p>Wherever you go, my heart will follow—around the Earth, through every horizon, with all the love I can give.</p>
+        <!-- Placeholder for Earth cartoon image -->
+    </div>
+
+    <script>
+        const lyrics = document.querySelectorAll('.lyrics');
+        const viewportHeight = window.innerHeight;
+
+        function checkPosition() {
+            const centerY = viewportHeight / 2;
+
+            lyrics.forEach(line => {
+                const rect = line.getBoundingClientRect();
+                const lineCenter = rect.top + (rect.height / 2);
+
+                if (lineCenter > centerY - 50 && lineCenter < centerY + 150) {
+                    line.classList.add('pop');
+                } else {
+                    line.classList.remove('pop');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', checkPosition);
+        window.addEventListener('resize', checkPosition);
+        checkPosition();
+    </script>
+</body>
+</html>
